@@ -10,7 +10,7 @@ class ControllorePizza():
     def get_prezzo_pizza(self):
         return self.model.prezzo
 
-    def get_ingredient_pizza(self):
+    def get_ingredienti_pizza(self):
         return self.model.ingredienti
 
     def update_nome_pizza(self, nome):
