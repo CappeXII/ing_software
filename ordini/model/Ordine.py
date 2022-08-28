@@ -1,6 +1,6 @@
 class Ordine():
-    def __init(self, numero):
-        super(Ordine, self).__init()
+    def __init__(self, numero):
+        super(Ordine, self).__init__()
         self.numero = numero
         self.pizze = []
 

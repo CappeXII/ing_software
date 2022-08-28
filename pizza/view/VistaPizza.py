@@ -48,7 +48,7 @@ class VistaPizza(QWidget):
         add_layout.addWidget(add_btn)
         v_layout.addLayout(add_layout)
 
-        self.layout(v_layout)
+        self.setLayout(v_layout)
         self.resize(600, 300)
         self.setWindowTitle("Pizza "+self.controllore.get_nome_pizza())
 

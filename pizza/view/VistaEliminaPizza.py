@@ -2,15 +2,16 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLabel, QPushButton
 
 from pizza.controller.ControllorePizza import ControllorePizza
 
+
 class VistaEliminaPizza(QWidget):
-    def __init(self, pizza,elimina_pizza,  elimina_callback, parent=None):
-        super(VistaEliminaPizza, self).__init(parent)
+    def __init__(self, pizza, elimina_pizza, elimina_callback, parent=None):
+        super(VistaEliminaPizza, self).__init__(parent)
         self.controllore = ControllorePizza(pizza)
         self.elimina_pizza = elimina_pizza
         self.elimina_callback = elimina_callback
 
         v_layout = QVBoxLayout()
-        label = QLabel("Vuoi eliminare la pizza" +pizza.nome+"?")
+        label = QLabel("Vuoi eliminare la pizza" + pizza.nome + "?")
         font = label.font()
         font.setPointSize(18)
         label.setFont(font)
@@ -22,10 +23,9 @@ class VistaEliminaPizza(QWidget):
 
         self.setLayout(v_layout)
         self.resize(150, 300)
-        self.windowTitle("Elimina pizza")
+        self.setWindowTitle("Elimina pizza")
 
     def elimina_pizza(self):
         self.elimina_pizza()
         self.elimina_callback()
         self.close()
-

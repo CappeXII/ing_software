@@ -2,10 +2,11 @@ from PyQt5.QtGui import QFont
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QLabel, QLineEdit, QPushButton
 
 from pizza.controller.ControllorePizza import ControllorePizza
-from listamaterie.controller.ControlloreListaMaterie import ControlloreListaMaterie
+
 
 class VistaModificaPizza(QWidget):
-    def __init__(self, pizza, modifica_nome, modifica_prezzo, modifica_ingrediente, elimina_ingrediente, elimina_callback, parent=None):
+    def __init__(self, pizza, modifica_nome, modifica_prezzo, modifica_ingrediente, elimina_ingrediente,
+                 elimina_callback, parent=None):
         super(VistaModificaPizza, self).__init__(parent)
         self.controllore = ControllorePizza(pizza)
         self.modifica_nome = modifica_nome
@@ -13,6 +14,8 @@ class VistaModificaPizza(QWidget):
         self.modifica_ingrediente = modifica_ingrediente
         self.elimina_ingrediente = elimina_ingrediente
         self.elimina_callback = elimina_callback
+        self.lista_ingredienti = []
+        self.index = 0
 
         self.v_layout = QVBoxLayout()
 
@@ -38,16 +41,18 @@ class VistaModificaPizza(QWidget):
 
         for ingrediente in self.controllore.get_ingredienti_pizza():
             ingrediente_box = QHBoxLayout()
-            label_ingrediente = QLabel(ingrediente.nome+":")
+            label_ingrediente = QLabel(ingrediente.nome + ":")
             label_ingrediente.setFont(self.font)
             ingrediente_box.addWidget(label_ingrediente)
             text_ingrediente = QLineEdit()
             text_ingrediente.setText(self.controllore.get_ingredienti_pizza())
-            ingrediente_box.addWidget(text_ingrediente)
+            self.lista_ingredienti.append(text_ingrediente)
+            ingrediente_box.addWidget(self.lista_ingredienti[self.index])
             delete_button = QPushButton("Elimina")
-            delete_button.clicked.connect(self.elimina_ingrediente(ingrediente))
+            delete_button.clicked.connect(self.elimina_ingrediente(self.index))
             ingrediente_box.addWidget(delete_button)
             self.v_layout.addLayout(ingrediente_box)
+            self.index += 1
 
         update_btn = QPushButton("Modifica")
         update_btn.clicked.connect(self.modifica)
@@ -57,23 +62,10 @@ class VistaModificaPizza(QWidget):
         self.setWindowTitle("Modifica pizza")
 
     def modifica(self):
-        if(self.text_nome.isModified()):
+        if self.text_nome.isModified():
             self.modifica_nome(self.text_nome.text())
-        if(self.text_prezzo.isModified()):
+        if self.text_prezzo.isModified():
             self.modifica_prezzo(self.text_prezzo.text())
-        for i in range (0, self.v_layout.count()):
-            if i>=2:
-                child = self.v_layout.takeAt(i)
-                text_ing = child.takeAt(1)
-                text = text_ing.text()
-                materia = child.takeAt(0)
-                name = materia.text()
-                if text.isModified():
-                    controller = ControlloreListaMaterie()
-                    self.modifica_ingrediente(controller.get_materia_by_nome(name), text.text())
 
         self.elimina_callback()
         self.close()
-
-
-
