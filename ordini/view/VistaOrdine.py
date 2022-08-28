@@ -3,6 +3,7 @@ from PyQt5.QtWidgets import QWidget, QVBoxLayout, QHBoxLayout, QPushButton, QLis
 
 from listapizze.controller.ControlloreListaPizze import ControlloreListaPizze
 from ordini.controller.ControlloreOrdine import ControlloreOrdine
+from ordini.view.VistaEliminaOrdine import VistaEliminaOrdine
 
 
 class VistaOrdine(QWidget):
@@ -56,16 +57,12 @@ class VistaOrdine(QWidget):
         for pizza in self.controllore.get_pizze():
             self.info_layout.addWidget(QLabel(pizza[0].nome + " " + pizza[1]))
 
-
     def show_delete_ordine(self):
         self.vista_elimina_ordine = VistaEliminaOrdine(self.controllore.model, self.controllore.delete_ordine(),
-                                                     self.update_ui())
+                                                       self.update_ui())
         self.vista_elimina_ordine.show()
         self.close()
 
     def add_pizza(self, materia, quantita):
         self.controllore.add_pizza(self.controller.get_pizza_by_nome(materia), quantita)
         self.update_ui()
-
-
-

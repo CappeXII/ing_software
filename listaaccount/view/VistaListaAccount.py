@@ -1,5 +1,4 @@
-from PyQt5.QtGui import QStandardItem, QStandardItemModel
-from PyQt5.QtWidgets import QWidget, QListView, QVBoxLayout, QSpacerItem, QSizePolicy, QPushButton, QHBoxLayout, QLabel
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QSpacerItem, QSizePolicy, QPushButton, QHBoxLayout, QLabel
 
 from account.view.VistaAccount import VistaAccount
 from listaaccount.controller.ControlloreListaAccount import ControlloreListaAccount

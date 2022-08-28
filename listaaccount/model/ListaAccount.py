@@ -1,4 +1,4 @@
-class ListaAccount():
+class ListaAccount:
     def __init__(self):
         super(ListaAccount, self).__init__()
         self.lista_account = []
@@ -11,7 +11,7 @@ class ListaAccount():
         return True
 
     def get_lista_account(self):
-        self.lista_account
+        return self.lista_account
 
     def get_account_by_codice_fiscale(self, codice):
         for account in self.lista_account:

@@ -1,6 +1,8 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLineEdit, QPushButton, QMessageBox
 
 from listaaccount.controller.ControlloreListaAccount import ControlloreListaAccount
+from login.view.VistaHomeAdmin import VistaHomeAdmin
+from login.view.VistaHomeCamerieri import VistaHomeCamerieri
 
 
 class VistaLogin(QWidget):

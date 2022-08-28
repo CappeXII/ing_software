@@ -1,4 +1,4 @@
-class Materia():
+class Materia:
     def __init__(self, nome, unita):
         self.nome = nome
         self.unita_misura = unita

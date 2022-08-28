@@ -1,5 +1,5 @@
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLineEdit, QListView, QPushButton, QMessageBox
-from listapizze.controller.ControlloreListaPizze import ControlloreListaPizze
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLineEdit, QMessageBox
+
 from listamaterie.controller.ControlloreListaMaterie import ControlloreListaMaterie
 from pizza.model.Pizza import Pizza
 
@@ -20,9 +20,9 @@ class VistaInserisciPizza(QWidget):
         self.prezzo_text.setPlaceholderText("Prezzo")
         v_layout.addWidget(self.prezzo_text)
 
-        self.layout(v_layout)
+        self.setLayout(v_layout)
         self.resize(600, 300)
-        self.windowTitle("InserisciPizza")
+        self.setWindowTitle("InserisciPizza")
 
     def aggiungi_pizza(self):
         nome = self.nome_text.text()
@@ -36,4 +36,4 @@ class VistaInserisciPizza(QWidget):
                 self.callback()
                 self.close()
             except ValueError:
-                QMessageBox.critical(self, 'Errore', 'Inserire un valore corretto nel prezzo (XX.XX)', QMessageBox.Ok, QMessageBox.Ok)
+                QMessageBox.critical(self, 'Errore', 'Errore formato prezzo (XX.XX)', QMessageBox.Ok, QMessageBox.Ok)

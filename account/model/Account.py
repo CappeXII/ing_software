@@ -1,4 +1,4 @@
-class Account():
+class Account:
     def __init__(self, nome, cognome, codice_fiscale, username, password, isAdmin):
         self.nome = nome
         self.cognome = cognome

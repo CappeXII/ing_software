@@ -27,23 +27,28 @@ class VistaAccount(QWidget):
 
         self.setLayout(h_layout)
         self.resize(600, 300)
-        self.setWindowTitle('Account '+self.controllore.get_username_account())
+        self.setWindowTitle('Account ' + self.controllore.get_username_account())
 
     def show_update_account(self):
-        self.vista_modifica = VistaModificaAccount(self.controllore.model, self.controllore.update_nome_account, self.controllore.update_cognome_account, self.controllore.update_username_account, self.controllore.update_password_account, self.controllore.update_codice_fiscale_account, self.update_ui)
+        self.vista_modifica = VistaModificaAccount(self.controllore.model, self.controllore.update_nome_account,
+                                                   self.controllore.update_cognome_account,
+                                                   self.controllore.update_username_account,
+                                                   self.controllore.update_password_account,
+                                                   self.controllore.update_codice_fiscale_account, self.update_ui)
         self.vista_modifica.show()
 
     def show_delete_account(self):
-        self.vista_elimina = VistaEliminaAccount(self.controllore.model, self.controllore.delete_account, self.elimina_callback)
+        self.vista_elimina = VistaEliminaAccount(self.controllore.model, self.controllore.delete_account,
+                                                 self.elimina_callback)
         self.vista_elimina.show()
         self.close()
 
     def update_ui(self):
         while self.info_layout.count():
-            child=self.info_layout.takeAt(0)
-            if  child.widget():
+            child = self.info_layout.takeAt(0)
+            if child.widget():
                 child.widget().deleteLater()
-        label_nome = QLabel("Nome: "+self.controllore.get_nome_account())
+        label_nome = QLabel("Nome: " + self.controllore.get_nome_account())
         font_nome = label_nome.font()
         font_nome.setPointSize(17)
         label_nome.setFont(font_nome)

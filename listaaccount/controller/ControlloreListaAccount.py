@@ -3,13 +3,14 @@ import os.path
 
 from listaaccount.model.ListaAccount import ListaAccount
 
-class ControlloreListaAccount():
+
+class ControlloreListaAccount:
     def __init__(self):
         super(ControlloreListaAccount, self).__init__()
         self.model = ListaAccount()
         if os.path.isfile('listaaccount/data/lista_account_salvata.pickle'):
             with open('listaaccount/data/lista_account_salvata.pickle', 'rb') as f:
-                lista_account_salvata=pickle.load(f)
+                lista_account_salvata = pickle.load(f)
             self.model = lista_account_salvata
 
     def add_account(self, account):

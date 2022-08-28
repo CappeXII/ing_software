@@ -1,6 +1,8 @@
 from PyQt5.QtWidgets import QWidget, QHBoxLayout, QVBoxLayout, QPushButton, QLabel
 
 from materia.controller.ControlloreMateria import ControlloreMateria
+from materia.view.VistaEliminaMateria import VistaEliminaMateria
+from materia.view.VistaModificaMateria import VistaModificaMateria
 
 
 class VistaMateria(QWidget):
@@ -26,21 +28,23 @@ class VistaMateria(QWidget):
 
         self.setLayout(h_layout)
         self.resize(600, 300)
-        self.setWindowTitle('Materia '+self.controllore.get_nome_materia())
+        self.setWindowTitle('Materia ' + self.controllore.get_nome_materia())
 
     def show_update_materia(self):
-        self.vista_modifica = VistaModificaMateria(self.controllore.model, self.controllore.update_nome_materia, self.controllore.update_unita_misura_materia, self.update_ui)
+        self.vista_modifica = VistaModificaMateria(self.controllore.model, self.controllore.update_nome_materia,
+                                                   self.controllore.update_unita_misura_materia, self.update_ui)
         self.vista_modifica.show()
 
     def show_delete_materia(self):
-        self.vista_elimina = VistaEliminaMateria(self.controllore.model, self.controllore.delete_materia, self.elimina_callback)
+        self.vista_elimina = VistaEliminaMateria(self.controllore.model, self.controllore.delete_materia,
+                                                 self.elimina_callback)
         self.vista_elimina.show()
         self.close()
 
     def update_ui(self):
         while self.info_layout.count():
-            child=self.info_layout.takeAt(0)
-            if  child.widget():
+            child = self.info_layout.takeAt(0)
+            if child.widget():
                 child.widget().deleteLater()
         label_nome = QLabel("Nome: " + self.controllore.get_nome_materia())
         font_nome = label_nome.font()
@@ -53,6 +57,3 @@ class VistaMateria(QWidget):
         font_um.setPointSize(17)
         label_um.setFont(font_nome)
         self.info_layout.addWidget(label_um)
-
-
-

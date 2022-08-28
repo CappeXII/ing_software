@@ -1,6 +1,7 @@
 from listaordini.model.ListaOrdini import ListaOrdini
 
-class ControlloreOrdine():
+
+class ControlloreOrdine:
     def __init__(self, ordine):
         self.model = ordine
 
@@ -10,12 +11,12 @@ class ControlloreOrdine():
     def get_pizze(self):
         return self.model.pizze
 
-    def add_pizza(self, pizza, int):
-        return self.model.add_pizza(pizza, int)
+    def add_pizza(self, pizza, num):
+        return self.model.add_pizza(pizza, num)
 
     def delete_ordine(self):
         lista = ListaOrdini()
-        lista_ordini= lista.get_lista_ordini()
+        lista_ordini = lista.get_lista_ordini()
         for ordine in lista_ordini:
             if ordine.numero == self.model.numero:
                 lista_ordini.remove(ordine)

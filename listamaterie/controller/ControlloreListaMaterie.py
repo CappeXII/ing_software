@@ -2,7 +2,9 @@ import pickle
 import os.path
 
 from listamaterie.model.ListaMaterie import ListaMaterie
-class ControlloreListaMaterie():
+
+
+class ControlloreListaMaterie:
     def __init__(self):
         super(ControlloreListaMaterie, self).__init__()
         self.model = ListaMaterie()

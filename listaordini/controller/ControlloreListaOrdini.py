@@ -2,7 +2,9 @@ import pickle
 import os.path
 
 from listaordini.model.ListaOrdini import ListaOrdini
-class ControlloreListaOrdini():
+
+
+class ControlloreListaOrdini:
     def __init__(self):
         super(ControlloreListaOrdini, self).__init__()
         self.model = ListaOrdini()
@@ -19,8 +21,8 @@ class ControlloreListaOrdini():
         else:
             return False
 
-    def get_ordine_by_numero(self, int):
-        self.get_ordine_by_numero(int)
+    def get_ordine_by_numero(self, num):
+        self.get_ordine_by_numero(num)
 
     def get_lista_ordini(self):
         self.get_lista_ordini()

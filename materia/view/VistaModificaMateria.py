@@ -4,7 +4,7 @@ from materia.controller.ControlloreMateria import ControlloreMateria
 
 
 class VistaModificaMateria(QWidget):
-    def __init__(self, account, modifica_nome, modifica_um,  elimina_callback):
+    def __init__(self, account, modifica_nome, modifica_um, elimina_callback):
         super(VistaModificaMateria, self).__init__()
         self.controller = ControlloreMateria(account)
         self.modifica_nome = modifica_nome
@@ -24,7 +24,6 @@ class VistaModificaMateria(QWidget):
         self.text_nome = QLineEdit()
         self.text_nome.setText(self.controller.get_nome_materia())
         h_layout1.addWidget(self.text_nome)
-
 
         v_layout.addLayout(h_layout1)
         v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
@@ -53,8 +52,8 @@ class VistaModificaMateria(QWidget):
 
     def modifica(self):
         if self.text_nome.isModified():
-           self.modifica_nome(self.text_nome.text())
+            self.modifica_nome(self.text_nome.text())
         if self.text_um.isModified():
-           self.modifca_um(self.text_um.text())
+            self.modifca_um(self.text_um.text())
         self.elimina_callback()
         self.close()

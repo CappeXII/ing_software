@@ -3,7 +3,8 @@ import os.path
 
 from listapizze.model.ListaPizze import ListaPizze
 
-class ControlloreListaPizze():
+
+class ControlloreListaPizze:
     def __init__(self):
         super(ControlloreListaPizze, self).__init__()
         self.model = ListaPizze()

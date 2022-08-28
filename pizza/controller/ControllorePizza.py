@@ -1,6 +1,7 @@
 from listapizze.model.ListaPizze import ListaPizze
 
-class ControllorePizza():
+
+class ControllorePizza:
     def __init__(self, pizza):
         self.model = pizza
 
@@ -36,6 +37,3 @@ class ControllorePizza():
 
     def delete_ingrediente(self, materia):
         return self.model.delete_ingrediente(materia)
-
-
-

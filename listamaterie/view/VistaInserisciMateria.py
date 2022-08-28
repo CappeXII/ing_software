@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QLineEdit, QVBoxLayout, QPushButton, QMessageBox, QCheckBox
+from PyQt5.QtWidgets import QWidget, QLineEdit, QVBoxLayout, QPushButton, QMessageBox
 
 from materia.model.Materia import Materia
 
@@ -41,10 +41,8 @@ class VistaInserisciMateria(QWidget):
                 if nome == materia.username:
                     check = True
             if check:
-                QMessageBox.critical(self, 'Errore', 'Esiste già una materia con questo nome', QMessageBox.Ok, QMessageBox.Ok)
+                QMessageBox.critical(self, 'Errore', 'Nome già presente', QMessageBox.Ok, QMessageBox.Ok)
             else:
                 self.controllore.add_materia(Materia(nome, um))
                 self.callback()
                 self.close()
-
-

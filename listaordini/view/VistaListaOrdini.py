@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QHBoxLayout, QLabel
 
 from listaordini.controller.ControlloreListaOrdini import ControlloreListaOrdini
+from listaordini.view.VistaInserisciOrdine import VistaInserisciOrdine
 from ordini.view.VistaOrdine import VistaOrdine
 
 

@@ -1,4 +1,4 @@
-class Ordine():
+class Ordine:
     def __init__(self, numero):
         super(Ordine, self).__init__()
         self.numero = numero
@@ -10,7 +10,3 @@ class Ordine():
                 return False
         self.pizze.append([pizza, numero])
         return True
-
-
-
-    

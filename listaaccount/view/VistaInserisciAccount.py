@@ -49,7 +49,7 @@ class VistaInserisciAccount(QWidget):
         nome = self.nome_text.text()
         cognome = self.cognome_text.text()
         username = self.username_text.text()
-        password =self.password_text.text()
+        password = self.password_text.text()
         codice_fiscale = self.codice_fiscale_text.text()
         isAdmin = self.isAdmin.isChecked()
 
@@ -61,10 +61,9 @@ class VistaInserisciAccount(QWidget):
                 if username == account.username:
                     check = True
             if check:
-                QMessageBox.critical(self, 'Errore', 'Esiste già un acocunt con questo username', QMessageBox.Ok, QMessageBox.Ok)
+                QMessageBox.critical(self, 'Errore', 'Esiste già un acocunt con questo username', QMessageBox.Ok,
+                                     QMessageBox.Ok)
             else:
                 self.controllore.add_account(Account(nome, cognome, codice_fiscale, username, password, isAdmin))
                 self.callback()
                 self.close()
-
-

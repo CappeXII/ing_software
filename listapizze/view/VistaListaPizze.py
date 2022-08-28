@@ -1,6 +1,7 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QHBoxLayout, QLabel
 from listapizze.controller.ControlloreListaPizze import ControlloreListaPizze
 from listapizze.view.VistaInserisciPizza import VistaInserisciPizza
+from pizza.view.VistaPizza import VistaPizza
 
 
 class VistaListaPizze(QWidget):
@@ -20,7 +21,7 @@ class VistaListaPizze(QWidget):
 
         self.setLayout(v_layout)
         self.resize(600, 300)
-        self.windowTitle("Lista Pizze")
+        self.setWindowTitle("Lista Pizze")
 
     def show_new_pizza(self):
         self.vista_inserisci_pizza = VistaInserisciPizza(self.controllore, self.update_ui)
@@ -36,7 +37,7 @@ class VistaListaPizze(QWidget):
             label = QLabel(pizza.nome)
             font = label.font()
             font.setPointSize(18)
-            label.font(font)
+            label.setFont(font)
             h_box.addWidget(label)
 
             show_btn = QPushButton("Apri")

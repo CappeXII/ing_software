@@ -25,7 +25,6 @@ class VistaListaMaterie(QWidget):
         self.resize(600, 300)
         self.setWindowTitle('Lista Materie')
 
-
     def update_ui(self):
         while self.info_layout.count():
             child = self.info_layout.takeAt(0)
@@ -43,8 +42,6 @@ class VistaListaMaterie(QWidget):
             open_btn.clicked.connect(self.show_selected_info(materia))
             h_box.addWidget(open_btn)
             self.info_layout.addLayout(h_box)
-
-
 
     def show_selected_info(self, materia):
         self.vista_materia = VistaMateria(materia, self.update_ui)

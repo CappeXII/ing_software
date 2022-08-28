@@ -1,6 +1,7 @@
 from listamaterie.model.ListaMaterie import ListaMaterie
 
-class ControlloreMateria():
+
+class ControlloreMateria:
     def __init__(self, materia):
         self.model = materia
 
@@ -20,7 +21,7 @@ class ControlloreMateria():
         lista = ListaMaterie()
         lista_materie = lista.get_lista_materie()
         for materia in lista_materie:
-            if materia.nome==self.model.nome:
+            if materia.nome == self.model.nome:
                 lista_materie.remove(materia)
                 return True
         return False

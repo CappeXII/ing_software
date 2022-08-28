@@ -1,7 +1,7 @@
-class ListaPizze():
+class ListaPizze:
     def __init__(self):
         super(ListaPizze, self).__init__()
-        self.lista_pizze= []
+        self.lista_pizze = []
 
     def add_pizza(self, pizza):
         for search in self.lista_pizze:

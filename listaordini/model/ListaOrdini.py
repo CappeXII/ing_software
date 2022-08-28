@@ -1,4 +1,4 @@
-class ListaOrdini():
+class ListaOrdini:
     def __init__(self):
         super(ListaOrdini, self).__init__()
         self.lista_ordini = []
