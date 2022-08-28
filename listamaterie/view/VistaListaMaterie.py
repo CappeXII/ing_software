@@ -5,9 +5,9 @@ from listamaterie.view.VistaInserisciMateria import VistaInserisciMateria
 from materia.view.VistaMateria import VistaMateria
 
 
-class VistaListaMateria(QWidget):
+class VistaListaMaterie(QWidget):
     def __init__(self, parent=None):
-        super(VistaListaMateria, self).__init__(parent)
+        super(VistaListaMaterie, self).__init__(parent)
 
         v_layout = QVBoxLayout()
         self.controllore = ControlloreListaMaterie()
