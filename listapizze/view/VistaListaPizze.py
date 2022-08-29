@@ -40,11 +40,12 @@ class VistaListaPizze(QWidget):
             label.setFont(font)
             h_box.addWidget(label)
 
-            show_btn = QPushButton("Apri")
-            show_btn.clicked.connect(lambda: self.show_selected_info(pizza))
+            show_btn = QPushButton("Apri "+pizza.nome)
+            show_btn.clicked.connect(self.show_selected_info)
             h_box.addWidget(show_btn)
             self.info_layout.addLayout(h_box)
 
-    def show_selected_info(self, pizza):
+    def show_selected_info(self):
+        pizza = self.controllore.get_pizza_by_nome(self.sender().text()[5:])
         self.vista_pizza = VistaPizza(pizza, self.update_ui)
         self.vista_pizza.show()

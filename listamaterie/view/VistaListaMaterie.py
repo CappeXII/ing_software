@@ -38,12 +38,13 @@ class VistaListaMaterie(QWidget):
             label.setFont(font)
             h_box.addWidget(label)
 
-            open_btn = QPushButton("Apri")
-            open_btn.clicked.connect(lambda: self.show_selected_info(materia))
+            open_btn = QPushButton("Apri "+ materia.nome)
+            open_btn.clicked.connect(self.show_selected_info)
             h_box.addWidget(open_btn)
             self.info_layout.addLayout(h_box)
 
-    def show_selected_info(self, materia):
+    def show_selected_info(self):
+        materia = self.controllore.get_materia_by_nome(self.sender().text()[5:])
         self.vista_materia = VistaMateria(materia, self.update_ui)
         self.vista_materia.show()
 

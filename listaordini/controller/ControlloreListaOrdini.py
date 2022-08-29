@@ -19,7 +19,7 @@ class ControlloreListaOrdini:
             pickle.dump(self.model, handle, pickle.HIGHEST_PROTOCOL)
 
     def get_ordine_by_numero(self, num):
-        self.model.get_ordine_by_numero(num)
+        return self.model.get_ordine_by_numero(num)
 
     def get_lista_ordini(self):
         return self.model.get_lista_ordini()

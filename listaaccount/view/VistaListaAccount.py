@@ -38,12 +38,14 @@ class VistaListaAccount(QWidget):
             label.setFont(font)
             h_box.addWidget(label)
 
-            open_btn = QPushButton("Apri")
-            open_btn.clicked.connect(lambda: self.show_selected_info(account))
+            open_btn = QPushButton("Apri " + account.username)
+            open_btn.clicked.connect(self.show_selected_info)
             h_box.addWidget(open_btn)
             self.info_layout.addLayout(h_box)
 
-    def show_selected_info(self, account):
+
+    def show_selected_info(self):
+        account = self.controllore.get_account_by_username(self.sender().text()[5:])
         self.vista_account = VistaAccount(account, self.update_ui)
         self.vista_account.show()
 

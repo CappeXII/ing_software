@@ -26,7 +26,7 @@ class ControlloreListaAccount:
         return self.model.get_lista_account()
 
     def get_account_by_username(self, codice):
-        self.model.get_account_by_username(codice)
+        return self.model.get_account_by_username(codice)
 
     def save_data(self):
         with open('listaaccount/data/lista_account_salvata.pickle', 'wb') as handle:

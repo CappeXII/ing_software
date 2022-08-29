@@ -42,12 +42,13 @@ class VistaListaOrdini(QWidget):
                 label.setFont(font)
                 h_box.addWidget(label)
 
-                show_btn = QPushButton("Apri")
-                show_btn.clicked.connect(lambda: self.show_selected_info(ordine))
+                show_btn = QPushButton("Apri "+ordine.numero)
+                show_btn.clicked.connect(self.show_selected_info)
                 h_box.addWidget(show_btn)
                 self.info_layout.addLayout(h_box)
                 self.info_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
-    def show_selected_info(self, ordine):
+    def show_selected_info(self):
+        ordine = self.controllore.get_ordine_by_numero(self.sender().text()[5:])
         self.vista_pizza = VistaOrdine(ordine, self.close)
         self.vista_pizza.show()
