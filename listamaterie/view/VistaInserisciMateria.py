@@ -19,11 +19,12 @@ class VistaInserisciMateria(QWidget):
         v_layout.addWidget(self.nome_text)
 
         self.um_text = QLineEdit(self)
-        self.um_text.setPlaceholderText("Unit' di misura")
+        self.um_text.setPlaceholderText("Unita' di misura")
         v_layout.addWidget(self.um_text)
 
         add_btn = QPushButton("Inserisci")
         add_btn.clicked.connect(self.inserisci_materia)
+        v_layout.addWidget(add_btn)
 
         self.setLayout(v_layout)
         self.resize(600, 300)
@@ -38,7 +39,7 @@ class VistaInserisciMateria(QWidget):
         else:
             check = False
             for materia in self.controllore.get_lista_materie():
-                if nome == materia.username:
+                if nome == materia.nome:
                     check = True
             if check:
                 QMessageBox.critical(self, 'Errore', 'Nome già presente', QMessageBox.Ok, QMessageBox.Ok)

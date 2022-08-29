@@ -11,21 +11,21 @@ class VistaEliminaPizza(QWidget):
         self.elimina_callback = elimina_callback
 
         v_layout = QVBoxLayout()
-        label = QLabel("Vuoi eliminare la pizza" + pizza.nome + "?")
+        label = QLabel("Vuoi eliminare la pizza " + pizza.nome + "?")
         font = label.font()
         font.setPointSize(18)
         label.setFont(font)
         v_layout.addWidget(label)
 
         delete_btn = QPushButton("Elimina")
-        delete_btn.clicked.connect(self.elimina_pizza)
+        delete_btn.clicked.connect(self.elimina)
         v_layout.addWidget(delete_btn)
 
         self.setLayout(v_layout)
         self.resize(150, 300)
         self.setWindowTitle("Elimina pizza")
 
-    def elimina_pizza(self):
+    def elimina(self):
         self.elimina_pizza()
         self.elimina_callback()
         self.close()

@@ -1,3 +1,4 @@
+from listaordini.controller.ControlloreListaOrdini import ControlloreListaOrdini
 from listaordini.model.ListaOrdini import ListaOrdini
 
 
@@ -15,10 +16,14 @@ class ControlloreOrdine:
         return self.model.add_pizza(pizza, num)
 
     def delete_ordine(self):
-        lista = ListaOrdini()
+        lista = ControlloreListaOrdini()
         lista_ordini = lista.get_lista_ordini()
         for ordine in lista_ordini:
             if ordine.numero == self.model.numero:
                 lista_ordini.remove(ordine)
-                return True
-        return False
+        lista.save_data()
+
+
+
+
+

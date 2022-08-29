@@ -32,7 +32,6 @@ class VistaAccount(QWidget):
     def show_update_account(self):
         self.vista_modifica = VistaModificaAccount(self.controllore.model, self.controllore.update_nome_account,
                                                    self.controllore.update_cognome_account,
-                                                   self.controllore.update_username_account,
                                                    self.controllore.update_password_account,
                                                    self.controllore.update_codice_fiscale_account, self.update_ui)
         self.vista_modifica.show()

@@ -41,7 +41,7 @@ class VistaListaPizze(QWidget):
             h_box.addWidget(label)
 
             show_btn = QPushButton("Apri")
-            show_btn.clicked.connect(self.show_selected_info(pizza))
+            show_btn.clicked.connect(lambda: self.show_selected_info(pizza))
             h_box.addWidget(show_btn)
             self.info_layout.addLayout(h_box)
 

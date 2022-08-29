@@ -20,12 +20,12 @@ class Pizza:
         for ingrediente in self.ingredienti:
             if ingrediente[0].__eq__(materia):
                 ingrediente[1] = q
-                return True
-        return False
+
+
 
     def delete_ingrediente(self, materia):
         for ingrediente in self.ingredienti:
             if ingrediente[0].__eq__(materia):
                 self.ingredienti.remove(ingrediente)
-                return True
-        return False
+
+

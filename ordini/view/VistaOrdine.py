@@ -39,13 +39,13 @@ class VistaOrdine(QWidget):
         quantita.setPlaceholderText("Quantità")
         add_layout.addWidget(quantita)
         add_btn = QPushButton()
-        add_btn.clicked.connect(self.add_pizza(pizza_name.selectedItems(), quantita.text()))
+        add_btn.clicked.connect( lambda: self.add_pizza(pizza_name.selectedItems(), quantita.text()))
         add_layout.addWidget(add_btn)
         v_layout.addLayout(add_layout)
 
         self.setLayout(v_layout)
         self.resize(600, 300)
-        self.setWindowTitle("Ordine " + self.controllore.get_numero())
+        self.setWindowTitle("Ordine " + str(self.controllore.get_numero()))
 
     def update_ui(self):
         while self.info_layout.count():
@@ -53,13 +53,14 @@ class VistaOrdine(QWidget):
             if child.widget():
                 child.widget().deleteLater()
 
-        self.info_layout.addWidget(QLabel(self.controllore.get_numero()))
-        for pizza in self.controllore.get_pizze():
-            self.info_layout.addWidget(QLabel(pizza[0].nome + " " + pizza[1]))
+        self.info_layout.addWidget(QLabel(str(self.controllore.get_numero())))
+        if self.controllore.get_pizze():
+            for pizza in self.controllore.get_pizze():
+                self.info_layout.addWidget(QLabel(pizza[0].nome + " " + pizza[1]))
 
     def show_delete_ordine(self):
-        self.vista_elimina_ordine = VistaEliminaOrdine(self.controllore.model, self.controllore.delete_ordine(),
-                                                       self.update_ui())
+        self.vista_elimina_ordine = VistaEliminaOrdine(self.controllore.model, self.controllore.delete_ordine,
+                                                       self.elimina_callback)
         self.vista_elimina_ordine.show()
         self.close()
 

@@ -15,7 +15,7 @@ class VistaHomeAdmin(QWidget):
         v_layout.addWidget(ordini_btn)
 
         account_btn = QPushButton("Account")
-        account_btn.clicked.connect(self.go_vista_lista_account)
+        account_btn.clicked.connect(lambda: self.go_vista_lista_account())
         v_layout.addWidget(account_btn)
 
         pizze_btn = QPushButton("Pizze")
@@ -28,7 +28,7 @@ class VistaHomeAdmin(QWidget):
 
         self.setLayout(v_layout)
         self.resize(600, 300)
-        self.setWindowTitle("Home Camerieri")
+        self.setWindowTitle("Home Admin")
 
     def go_vista_lista_ordini(self):
         self.vista_lista_ordini = VistaListaOrdini()

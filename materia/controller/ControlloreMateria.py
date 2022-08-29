@@ -1,3 +1,4 @@
+from listamaterie.controller.ControlloreListaMaterie import ControlloreListaMaterie
 from listamaterie.model.ListaMaterie import ListaMaterie
 
 
@@ -18,10 +19,16 @@ class ControlloreMateria:
         self.model.unita_misura = unita
 
     def delete_materia(self):
-        lista = ListaMaterie()
+        lista = ControlloreListaMaterie()
         lista_materie = lista.get_lista_materie()
         for materia in lista_materie:
             if materia.nome == self.model.nome:
                 lista_materie.remove(materia)
-                return True
-        return False
+        lista.save_data()
+
+    def save_data(self):
+        lista = ControlloreListaMaterie()
+        for materia in lista.get_lista_materie():
+            if materia.nome == self.get_nome_materia():
+                materia.unita_misura= self.get_unita_misura_materia()
+        lista.save_data()

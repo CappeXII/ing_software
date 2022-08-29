@@ -12,22 +12,22 @@ class VistaEliminaAccount(QWidget):
 
         v_layout = QVBoxLayout()
 
-        label_nome = QLabel("Vuoi eliminare l'account" + self.controllore.get_username_account() + "?")
+        label_nome = QLabel("Vuoi eliminare l'account " + self.controllore.get_username_account() + "?")
         font_nome = label_nome.font()
-        font_nome.setPointSize(30)
+        font_nome.setPointSize(18)
         label_nome.setFont(font_nome)
         v_layout.addWidget(label_nome)
 
         v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         btn_elimina = QPushButton("Elimina")
-        btn_elimina.clicked.connect(self.elimina_account)
+        btn_elimina.clicked.connect(self.elimina)
         v_layout.addWidget(btn_elimina)
 
         self.setLayout(v_layout)
         self.resize(600, 300)
         self.setWindowTitle('Eliminazione account')
 
-    def elimina_account(self):
+    def elimina(self):
         self.elimina_account()
         self.elimina_callback()
         self.close()

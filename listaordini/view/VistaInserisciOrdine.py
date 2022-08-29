@@ -10,23 +10,24 @@ class VistaInserisciOrdine(QWidget):
         self.callback = callback
         self.numero = 0
         v_layout = QVBoxLayout()
-        for ordine in controllore.get_lista_ordini():
-            if ordine.numero > self.numero:
-                self.numero = ordine.numero
+        if self.controllore.get_lista_ordini():
+            for ordine in controllore.get_lista_ordini():
+                if ordine.numero > self.numero:
+                    self.numero = ordine.numero
         self.numero += 1
-        label_numero = QLabel("Numero previsto: " + self.numero)
+        label_numero = QLabel("Numero previsto: " + str(self.numero))
         font = label_numero.font()
         font.setPointSize(18)
         label_numero.setFont(font)
         v_layout.addWidget(label_numero)
         add_btn = QPushButton("Aggiungi un nuovo ordine")
-        add_btn.clicked.connect(self.aggiungi_ordine())
+        add_btn.clicked.connect(lambda: self.aggiungi_ordine())
         v_layout.addWidget(add_btn)
         self.setLayout(v_layout)
         self.resize(600, 300)
         self.setWindowTitle("Inserisci Ordine")
 
     def aggiungi_ordine(self):
-        self.controllore.add_ordine(Ordine(self.numero))
+        self.controllore.aggiungi_ordine(Ordine(self.numero))
         self.callback()
         self.close()

@@ -1,4 +1,4 @@
-from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLineEdit, QMessageBox
+from PyQt5.QtWidgets import QWidget, QVBoxLayout, QLineEdit, QMessageBox, QPushButton
 
 from listamaterie.controller.ControlloreListaMaterie import ControlloreListaMaterie
 from pizza.model.Pizza import Pizza
@@ -20,6 +20,10 @@ class VistaInserisciPizza(QWidget):
         self.prezzo_text.setPlaceholderText("Prezzo")
         v_layout.addWidget(self.prezzo_text)
 
+        add_btn = QPushButton("Aggiungi")
+        add_btn.clicked.connect(self.aggiungi_pizza)
+        v_layout.addWidget(add_btn)
+
         self.setLayout(v_layout)
         self.resize(600, 300)
         self.setWindowTitle("InserisciPizza")
@@ -32,7 +36,7 @@ class VistaInserisciPizza(QWidget):
         else:
             try:
                 float(prezzo)
-                self.controllore.add_pizza(Pizza(nome, prezzo))
+                self.controllore.aggiungi_pizza(Pizza(nome, prezzo))
                 self.callback()
                 self.close()
             except ValueError:

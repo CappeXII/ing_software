@@ -1,3 +1,4 @@
+from listaaccount.controller.ControlloreListaAccount import ControlloreListaAccount
 from listaaccount.model.ListaAccount import ListaAccount
 class ControlloreAccount():
     def __init__(self, account):
@@ -43,13 +44,6 @@ class ControlloreAccount():
         else:
             return False
 
-    def update_username_account(self, username):
-        if isinstance(username, str):
-            self.model.username = username
-            return True
-        else:
-            return False
-
     def update_password_account(self, password):
         if isinstance(password, str):
             self.model.password = password
@@ -58,10 +52,21 @@ class ControlloreAccount():
             return False
 
     def delete_account(self):
-        lista = ListaAccount()
-        lista_account= lista.get_lista_account()
+        lista = ControlloreListaAccount()
+        lista_account = lista.get_lista_account()
         for account in lista_account:
             if account.codice_fiscale == self.model.codice_fiscale:
                 lista_account.remove(account)
-                return True
-        return False
+        lista.save_data()
+
+    def save_data(self):
+        lista = ControlloreListaAccount()
+        for account in lista.get_lista_account():
+            if account.username == self.model.username:
+                account.nome = self.model.nome
+                account.cognome = self.model.cognome
+                account.codice_fiscale = self.model.codice_fiscale
+                account.password = self.model.password
+                account.isAdmin = self.model.isAdmin
+        lista.save_data()
+

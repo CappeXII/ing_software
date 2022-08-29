@@ -14,18 +14,15 @@ class ControlloreListaOrdini:
             self.model = lista_ordini_salvata
 
     def aggiungi_ordine(self, ordine):
-        if self.model.add_ordine(ordine):
-            with open('listaordini/data/lista_ordini_salvata.pickle', 'wb') as handle:
-                pickle.dump(self.model, handle, pickle.HIGHEST_PROTOCOL)
-                return True
-        else:
-            return False
+        self.model.add_ordine(ordine)
+        with open('listaordini/data/lista_ordini_salvata.pickle', 'wb') as handle:
+            pickle.dump(self.model, handle, pickle.HIGHEST_PROTOCOL)
 
     def get_ordine_by_numero(self, num):
-        self.get_ordine_by_numero(num)
+        self.model.get_ordine_by_numero(num)
 
     def get_lista_ordini(self):
-        self.get_lista_ordini()
+        return self.model.get_lista_ordini()
 
     def save_data(self):
         with open('listaordini/data/lista_ordini_salvata.pickle', 'wb') as handle:

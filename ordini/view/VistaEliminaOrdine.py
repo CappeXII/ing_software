@@ -11,21 +11,21 @@ class VistaEliminaOrdine(QWidget):
         self.elimina_callback = elimina_callback
 
         v_layout = QVBoxLayout()
-        label = QLabel("Vuoi eliminare la ordine" + ordine.numero + "?")
+        label = QLabel("Vuoi eliminare l'ordine " + str(ordine.numero) + "?")
         font = label.font()
         font.setPointSize(18)
         label.setFont(font)
         v_layout.addWidget(label)
 
         delete_btn = QPushButton("Elimina")
-        delete_btn.clicked.connect(self.elimina_ordine)
+        delete_btn.clicked.connect(lambda: self.elimina())
         v_layout.addWidget(delete_btn)
 
         self.setLayout(v_layout)
         self.resize(150, 300)
         self.setWindowTitle("Elimina ordine")
 
-    def elimina_ordine(self):
+    def elimina(self):
         self.elimina_ordine()
         self.elimina_callback()
         self.close()

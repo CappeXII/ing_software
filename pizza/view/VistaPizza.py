@@ -43,8 +43,8 @@ class VistaPizza(QWidget):
         quantita = QLineEdit()
         quantita.setPlaceholderText("Quantità")
         add_layout.addWidget(quantita)
-        add_btn = QPushButton()
-        add_btn.clicked.connect(self.add_ingrediente(materia_name.selectedItems(), quantita.text()))
+        add_btn = QPushButton("Aggiungi")
+        add_btn.clicked.connect(lambda: self.add_ingrediente(materia_name.selectedItems(), quantita.text()))
         add_layout.addWidget(add_btn)
         v_layout.addLayout(add_layout)
 
@@ -58,23 +58,27 @@ class VistaPizza(QWidget):
             if child.widget():
                 child.widget().deleteLater()
         self.info_layout.addWidget(QLabel(self.controllore.get_nome_pizza()))
-        self.info_layout.addWidget(QLabel(self.controllore.get_prezzo_pizza()))
-        for ingrediente in self.controllore.get_ingredienti_pizza():
-            self.info_layout.addWidget(QLabel(ingrediente[0].nome + " " + ingrediente[1]))
+        self.info_layout.addWidget(QLabel("Prezzo: " + self.controllore.get_prezzo_pizza() + '€'))
+        self.info_layout.addWidget(QLabel("Ingredienti:"))
+        if self.controllore.get_ingredienti_pizza():
+            for ingrediente in self.controllore.get_ingredienti_pizza():
+                if ingrediente[1]!='':
+                    self.info_layout.addWidget(QLabel(ingrediente[0].nome + " " + ingrediente[1]))
 
     def show_update_pizza(self):
-        self.vista_modifica_pizza = VistaModificaPizza(self.controllore.model, self.controllore.update_nome_pizza,
+        self.vista_modifica_pizza = VistaModificaPizza(self.controllore.model,
                                                        self.controllore.update_prezzo_pizza,
                                                        self.controllore.update_ingrediente,
-                                                       self.controllore.delete_ingrediente, self.update_ui())
+                                                       self.controllore.delete_ingrediente, self.update_ui)
         self.vista_modifica_pizza.show()
 
     def show_delete_pizza(self):
-        self.vista_elimina_pizza = VistaEliminaPizza(self.controllore.model, self.controllore.delete_pizza(),
-                                                     self.update_ui())
+        self.vista_elimina_pizza = VistaEliminaPizza(self.controllore.model, self.controllore.delete_pizza,
+                                                     self.close)
         self.vista_elimina_pizza.show()
         self.close()
 
     def add_ingrediente(self, materia, quantita):
-        self.controllore.add_ingrediente(self.controller.get_materia_by_nome(materia), quantita)
+        self.controllore.add_ingrediente(self.controller.get_materia_by_nome(materia[0].text()), quantita)
+        self.controllore.save_data()
         self.update_ui()

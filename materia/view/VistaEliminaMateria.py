@@ -12,7 +12,7 @@ class VistaEliminaMateria(QWidget):
 
         v_layout = QVBoxLayout()
 
-        label_nome = QLabel("Vuoi eliminare la materia" + self.controllore.get_nome_materia() + "?")
+        label_nome = QLabel("Vuoi eliminare la materia " + self.controllore.get_nome_materia() + "?")
         font_nome = label_nome.font()
         font_nome.setPointSize(30)
         label_nome.setFont(font_nome)
@@ -20,14 +20,14 @@ class VistaEliminaMateria(QWidget):
 
         v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
         btn_elimina = QPushButton("Elimina")
-        btn_elimina.clicked.connect(self.elimina_materia)
+        btn_elimina.clicked.connect(self.elimina)
         v_layout.addWidget(btn_elimina)
 
         self.setLayout(v_layout)
         self.resize(600, 300)
         self.setWindowTitle('Eliminazione materia')
 
-    def elimina_materia(self):
+    def elimina(self):
         self.elimina_materia()
         self.elimina_callback()
         self.close()

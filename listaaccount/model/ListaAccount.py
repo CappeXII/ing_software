@@ -13,7 +13,7 @@ class ListaAccount:
     def get_lista_account(self):
         return self.lista_account
 
-    def get_account_by_codice_fiscale(self, codice):
+    def get_account_by_username(self, user):
         for account in self.lista_account:
-            if account.codice_fiscale == codice:
+            if account.username == user:
                 return account

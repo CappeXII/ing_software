@@ -15,7 +15,7 @@ class VistaListaMaterie(QWidget):
         self.update_ui()
         v_layout.addLayout(self.info_layout)
 
-        v_layout.addWIdget(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
+        v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
         insert_button = QPushButton("Inserisci una nuova materia")
         insert_button.clicked.connect(self.show_add_materia)
@@ -39,7 +39,7 @@ class VistaListaMaterie(QWidget):
             h_box.addWidget(label)
 
             open_btn = QPushButton("Apri")
-            open_btn.clicked.connect(self.show_selected_info(materia))
+            open_btn.clicked.connect(lambda: self.show_selected_info(materia))
             h_box.addWidget(open_btn)
             self.info_layout.addLayout(h_box)
 

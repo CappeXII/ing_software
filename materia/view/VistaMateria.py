@@ -37,7 +37,7 @@ class VistaMateria(QWidget):
 
     def show_delete_materia(self):
         self.vista_elimina = VistaEliminaMateria(self.controllore.model, self.controllore.delete_materia,
-                                                 self.elimina_callback)
+                                                 self.close)
         self.vista_elimina.show()
         self.close()
 

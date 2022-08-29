@@ -28,7 +28,7 @@ class VistaInserisciAccount(QWidget):
 
         self.password_text = QLineEdit(self)
         self.password_text.setPlaceholderText("Password")
-        self.password_text.setEchoMode("Password")
+        self.password_text.setEchoMode(QLineEdit.Password)
         v_layout.addWidget(self.password_text)
 
         self.codice_fiscale_text = QLineEdit(self)
@@ -40,6 +40,7 @@ class VistaInserisciAccount(QWidget):
 
         add_btn = QPushButton("Inserisci")
         add_btn.clicked.connect(self.inserisci_account)
+        v_layout.addWidget(add_btn)
 
         self.setLayout(v_layout)
         self.resize(600, 300)

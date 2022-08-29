@@ -1,3 +1,4 @@
+from listapizze.controller.ControlloreListaPizze import ControlloreListaPizze
 from listapizze.model.ListaPizze import ListaPizze
 
 
@@ -21,19 +22,28 @@ class ControllorePizza:
         self.model.prezzo = prezzo
 
     def delete_pizza(self):
-        lista = ListaPizze()
+        lista = ControlloreListaPizze()
         lista_pizze = lista.get_lista_pizze()
         for pizza in lista_pizze:
             if pizza.nome == self.model.nome:
                 lista_pizze.remove(pizza)
-                return True
-        return False
+        lista.save_data()
+
+
 
     def add_ingrediente(self, materia, q):
-        return self.model.add_ingrediente(materia, q)
+        self.model.add_ingrediente(materia, q)
 
     def update_ingrediente(self, materia, q):
         return self.model.update_ingrediente(materia, q)
 
     def delete_ingrediente(self, materia):
         return self.model.delete_ingrediente(materia)
+
+    def save_data(self):
+        lista = ControlloreListaPizze()
+        for pizza in lista.get_lista_pizze():
+            if self.model.nome == pizza.nome:
+                pizza.prezzo = self.model.prezzo
+                pizza.ingredienti = self.model.ingredienti
+        lista.save_data()
