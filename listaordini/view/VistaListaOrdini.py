@@ -42,7 +42,7 @@ class VistaListaOrdini(QWidget):
                 label.setFont(font)
                 h_box.addWidget(label)
 
-                show_btn = QPushButton("Apri "+ordine.numero)
+                show_btn = QPushButton("Apri "+str(ordine.numero))
                 show_btn.clicked.connect(self.show_selected_info)
                 h_box.addWidget(show_btn)
                 self.info_layout.addLayout(h_box)
