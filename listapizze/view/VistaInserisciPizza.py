@@ -36,7 +36,7 @@ class VistaInserisciPizza(QWidget):
         else:
             try:
                 float(prezzo)
-                self.controllore.aggiungi_pizza(Pizza(nome, prezzo))
+                self.controllore.add_pizza(Pizza(nome, prezzo))
                 self.callback()
                 self.close()
             except ValueError:

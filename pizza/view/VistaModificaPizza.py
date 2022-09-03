@@ -44,7 +44,7 @@ class VistaModificaPizza(QWidget):
             self.lista_ingredienti.append(text_ingrediente)
             ingrediente_box.addWidget(self.lista_ingredienti[self.index])
             delete_button = QPushButton("Elimina")
-            delete_button.clicked.connect(lambda: self.elimina(self.index))
+            delete_button.clicked.connect(lambda: self.elimina_ingrediente(self.index))
             ingrediente_box.addWidget(delete_button)
             self.v_layout.addLayout(ingrediente_box)
             self.index += 1
@@ -68,7 +68,7 @@ class VistaModificaPizza(QWidget):
         self.elimina_callback()
         self.close()
 
-    def elimina(self, index):
+    def elimina_ingrediente(self, index):
         self.elimina_ingrediente(self.controller.get_materia_by_nome(self.lista_ingredienti[index].placeholderText()))
         self.controllore.save_data()
         self.elimina_callback()

@@ -24,9 +24,9 @@ class VistaModificaAccount(QWidget):
         label_nome.setFont(font_nome)
         h_layout1.addWidget(label_nome)
 
-        text_nome = QLineEdit()
-        text_nome.setText(self.controller.get_nome_account())
-        h_layout1.addWidget(text_nome)
+        self.text_nome = QLineEdit()
+        self.text_nome.setText(self.controller.get_nome_account())
+        h_layout1.addWidget(self.text_nome)
 
         v_layout.addLayout(h_layout1)
         v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
@@ -38,9 +38,9 @@ class VistaModificaAccount(QWidget):
         label_cognome.setFont(font_nome)
         h_layout2.addWidget(label_cognome)
 
-        text_cognome = QLineEdit()
-        text_cognome.setText(self.controller.get_cognome_account())
-        h_layout2.addWidget(text_cognome)
+        self.text_cognome = QLineEdit()
+        self.text_cognome.setText(self.controller.get_cognome_account())
+        h_layout2.addWidget(self.text_cognome)
 
         v_layout.addLayout(h_layout2)
         v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
@@ -52,10 +52,10 @@ class VistaModificaAccount(QWidget):
         label_password.setFont(font_password)
         h_layout3.addWidget(label_password)
 
-        text_password = QLineEdit()
-        text_password.setEchoMode(QLineEdit.Password)
-        text_password.setText(self.controller.get_password_account())
-        h_layout3.addWidget(text_password)
+        self.text_password = QLineEdit()
+        self.text_password.setEchoMode(QLineEdit.Password)
+        self.text_password.setText(self.controller.get_password_account())
+        h_layout3.addWidget(self.text_password)
 
         v_layout.addLayout(h_layout3)
         v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
@@ -67,31 +67,31 @@ class VistaModificaAccount(QWidget):
         label_codice_fiscale.setFont(font_codice_fiscale)
         h_layout4.addWidget(label_codice_fiscale)
 
-        text_codice_fiscale = QLineEdit()
-        text_codice_fiscale.setText(self.controller.get_codice_fiscale_account())
-        h_layout4.addWidget(text_codice_fiscale)
+        self.text_codice_fiscale = QLineEdit()
+        self.text_codice_fiscale.setText(self.controller.get_codice_fiscale_account())
+        h_layout4.addWidget(self.text_codice_fiscale)
 
         v_layout.addLayout(h_layout4)
         v_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
         update_btn = QPushButton("Modifica")
         update_btn.clicked.connect(
-                lambda: self.modifica(text_nome, text_cognome, text_password, text_codice_fiscale))
+                lambda: self.modifica())
         v_layout.addWidget(update_btn)
 
         self.setLayout(v_layout)
         self.resize(600, 300)
         self.setWindowTitle('Modifica account')
 
-    def modifica(self, text_nome, text_cognome, text_password, text_codice_fiscale):
-        if text_nome.isModified():
-            self.modifica_nome(text_nome.text())
-        if text_cognome.isModified():
-            self.modifica_cognome(text_cognome.text())
-        if text_password.isModified():
-            self.modifica_password(text_password.text())
-        if text_codice_fiscale.isModified():
-            self.modifica_codice_fiscale(text_codice_fiscale.text())
+    def modifica(self):
+        if self.text_nome.isModified():
+            self.modifica_nome(self.text_nome.text())
+        if self.text_cognome.isModified():
+            self.modifica_cognome(self.text_cognome.text())
+        if self.text_password.isModified():
+            self.modifica_password(self.text_password.text())
+        if self.text_codice_fiscale.isModified():
+            self.modifica_codice_fiscale(self.text_codice_fiscale.text())
         self.controller.save_data()
         self.elimina_callback()
         self.close()

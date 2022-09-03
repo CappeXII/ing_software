@@ -1,4 +1,5 @@
 from PyQt5.QtWidgets import QWidget, QVBoxLayout, QPushButton, QHBoxLayout, QLabel, QSpacerItem, QSizePolicy
+from PyQt5.sip import delete
 
 from listaordini.controller.ControlloreListaOrdini import ControlloreListaOrdini
 from listaordini.view.VistaInserisciOrdine import VistaInserisciOrdine
@@ -31,8 +32,8 @@ class VistaListaOrdini(QWidget):
     def update_ui(self):
         while self.info_layout.count():
             child = self.info_layout.takeAt(0)
-            if child.widget():
-                child.widget().deleteLater()
+            if child.layout():
+                delete(child)
         if self.controllore.get_lista_ordini():
             for ordine in self.controllore.get_lista_ordini():
                 h_box = QHBoxLayout()

@@ -13,7 +13,7 @@ class ControlloreListaPizze:
                 lista_pizze_salvata = pickle.load(f)
             self.model = lista_pizze_salvata
 
-    def aggiungi_pizza(self, pizza):
+    def add_pizza(self, pizza):
         if self.model.add_pizza(pizza):
             with open('listapizze/data/lista_pizze_salvata.pickle', 'wb') as handle:
                 pickle.dump(self.model, handle, pickle.HIGHEST_PROTOCOL)
