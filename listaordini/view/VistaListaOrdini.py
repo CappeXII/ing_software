@@ -50,6 +50,6 @@ class VistaListaOrdini(QWidget):
                 self.info_layout.addItem(QSpacerItem(20, 40, QSizePolicy.Minimum, QSizePolicy.Expanding))
 
     def show_selected_info(self):
-        ordine = self.controllore.get_ordine_by_numero(self.sender().text()[5:])
+        ordine = self.controllore.get_ordine_by_numero(int(self.sender().text()[5:]))
         self.vista_pizza = VistaOrdine(ordine, self.close)
         self.vista_pizza.show()
