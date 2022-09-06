@@ -8,6 +8,7 @@ from ordini.view.VistaEliminaOrdine import VistaEliminaOrdine
 
 class VistaOrdine(QWidget):
     def __init__(self, ordine, elimina_callback, parent=None):
+
         super(VistaOrdine, self).__init__(parent)
         self.controllore = ControlloreOrdine(ordine)
         self.controller = ControlloreListaPizze()

@@ -9,6 +9,7 @@ from ordini.view.VistaOrdine import VistaOrdine
 class VistaListaOrdini(QWidget):
     def __init__(self, parent=None):
         super(VistaListaOrdini, self).__init__(parent)
+        self.vista_pizza = None
         self.controllore = ControlloreListaOrdini()
 
         v_layout = QVBoxLayout()
